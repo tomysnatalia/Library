@@ -1,4 +1,4 @@
-package com.crud.kodilla.library.repository;
+package com.crud.kodilla.library.interfaces;
 
 import com.crud.kodilla.library.domain.Book;
 

@@ -19,19 +19,19 @@ public class RentalsService {
     }
 
 
-    public Optional <Rentals> getRentalsByExampleId(Long exampleId) {
-        return rentalsRepository.findById(exampleId);
+    public Optional <Rentals> getRentalExample(Long exampleId) {
+        return rentalsRepository.findByExampleId(exampleId);
     }
 
-    public Optional<Rentals> getRentalsByReaderId(Long readerId) {
-        return rentalsRepository.findById(readerId);
+    public Optional<Rentals> getRentalReader(Long readerId) {
+        return rentalsRepository.findByReaderId(readerId);
     }
 
     public Rentals saveRentals (Rentals rentals) {
         return rentalsRepository.save(rentals);
     }
 
-    public void deleteRental (final Long exampleId) {
-        rentalsRepository.deleteById(exampleId);
+    public void deleteRental (final Long id) {
+        rentalsRepository.deleteById(id);
     }
 }

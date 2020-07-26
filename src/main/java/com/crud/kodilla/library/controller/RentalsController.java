@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/v2")
 public class RentalsController {
@@ -28,14 +29,14 @@ public class RentalsController {
         return rentalsMapper.mapToRentalsDtoList(rentalsService.getAllRentals());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/rentalByExampleId/{exampleId}")
-    public RentalsDto  getRentalsByExampleId (@PathVariable Long exampleId) throws LibraryNotFoundException {
-        return rentalsMapper.mapToRentalsDto(rentalsService.getRentalsByExampleId(exampleId).orElseThrow(LibraryNotFoundException::new));
+    @RequestMapping(method = RequestMethod.GET, value = "/rentalExample/{exampleId}")
+    public RentalsDto  getRentalExample(@PathVariable Long exampleId) throws LibraryNotFoundException {
+        return rentalsMapper.mapToRentalsDto(rentalsService.getRentalExample(exampleId).orElseThrow(LibraryNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/rentalByReaderId/{readerId}")
-    public RentalsDto getRentalsByReaderId (@PathVariable Long readerId) throws LibraryNotFoundException {
-        return rentalsMapper.mapToRentalsDto(rentalsService.getRentalsByExampleId(readerId).orElseThrow(LibraryNotFoundException::new));
+    @RequestMapping(method = RequestMethod.GET, value = "/rentalReader/{readerId}")
+    public RentalsDto getRentalReader(@PathVariable Long readerId) throws LibraryNotFoundException {
+        return rentalsMapper.mapToRentalsDto(rentalsService.getRentalReader(readerId).orElseThrow(LibraryNotFoundException::new));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/rental", consumes = APPLICATION_JSON_VALUE)
@@ -43,16 +44,13 @@ public class RentalsController {
         rentalsService.saveRentals(rentalsMapper.mapToRentals(rentalsDto));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/rental/{exampleId}")
-    public void deleteRental(@PathVariable Long exampleId) throws LibraryNotFoundException{
-        if(rentalsService.getRentalsByExampleId(exampleId).isPresent())
-            rentalsService.deleteRental(exampleId);
-        else
-            throw new LibraryNotFoundException();
+    @RequestMapping(method = RequestMethod.DELETE, value = "/rental/{id}")
+    public void deleteRental(@PathVariable Long id) {
+            rentalsService.deleteRental(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/rentals")
     public RentalsDto updateRental (@RequestBody RentalsDto rentalsDto) {
-        return new RentalsDto(1L, 2425L, 890314L, LocalDate.of(2020,7,25), LocalDate.of(2020,8, 25));
+        return rentalsMapper.mapToRentalsDto(rentalsService.saveRentals(rentalsMapper.mapToRentals(rentalsDto)));
     }
 }

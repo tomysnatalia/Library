@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/v2")
 public class BookController {
@@ -47,6 +48,8 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/book")
     public BookDto updateBook(@RequestBody BookDto bookDto) {
-        return new BookDto( 1L, 2425L, "Czysty Kod", "Robert C.Martin", 2014);
+        return bookMapper.mapToBookDto(bookService.saveBook(bookMapper.mapToBook(bookDto)));
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.crud.kodilla.library.repository;
 
 import com.crud.kodilla.library.domain.Book;
+import com.crud.kodilla.library.interfaces.BookInterface;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;

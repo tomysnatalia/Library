@@ -20,8 +20,8 @@ public class BookService {
     }
 
 
-    public void saveBook (final Book book) {
-        bookRepository.save(book);
+    public Book saveBook (final Book book) {
+       return bookRepository.save(book);
     }
 
     public void deleteBook(final Long id) {

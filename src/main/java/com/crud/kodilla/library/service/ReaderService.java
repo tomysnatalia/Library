@@ -19,8 +19,8 @@ public class ReaderService {
         return readerRepository.findAll();
     }
 
-    public Optional<Reader> getReaderByReaderId (final Long readerId) {
-        return readerRepository.findById(readerId);
+    public Optional<Reader> getReader (final Long readerId) {
+        return readerRepository.findByReaderId(readerId);
     }
 
     public Reader saveReader (final Reader reader) {
@@ -28,6 +28,6 @@ public class ReaderService {
     }
 
     public void deleteReader (final Long readerId) {
-        readerRepository.deleteById(readerId);
+        readerRepository.deleteByReaderId(readerId);
     }
 }
