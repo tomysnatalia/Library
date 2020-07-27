@@ -26,13 +26,13 @@ public class BookCopies {
     private Long titleId;
 
     @Column(name = "isLost")
-    boolean isLost;
+    String isLost;
 
     @Column(name = "isBorrowed")
-    boolean isBorrowed;
+    String isBorrowed;
 
     @Column(name = "isDestroyed")
-    boolean isDestroyed;
+    String isDestroyed;
 
 
 }

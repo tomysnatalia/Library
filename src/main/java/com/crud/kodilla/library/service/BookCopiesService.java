@@ -23,7 +23,7 @@ public class BookCopiesService {
         return bookCopiesRepository.save(bookCopies);
     }
 
-    public BookCopies getBook(final Long titleId) {
+    public List<BookCopies> getBook(final Long titleId) {
         return bookCopiesRepository.findByTitleId(titleId);
     }
 

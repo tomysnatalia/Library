@@ -31,8 +31,8 @@ public class BookCopiesController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/bookCopies/{titleId}")
-    public BookCopiesDto getBook(@PathVariable Long titleId) {
-        return bookCopiesMapper.mapToBookCopiesDto(bookCopiesService.getBook(titleId));
+    public List<BookCopiesDto> getBook(@PathVariable Long titleId) {
+        return bookCopiesMapper.mapToBookCopiesDtoList(bookCopiesService.getBook(titleId));
     }
 
 
@@ -49,6 +49,7 @@ public class BookCopiesController {
     @RequestMapping(method = RequestMethod.PUT, value = "/bookCopies")
     public BookCopiesDto updateBook(@RequestBody BookCopiesDto bookCopiesDto) {
         return bookCopiesMapper.mapToBookCopiesDto(bookCopiesService.saveBookCopy(bookCopiesMapper.mapToBookCopies(bookCopiesDto)));
+
     }
 
 }

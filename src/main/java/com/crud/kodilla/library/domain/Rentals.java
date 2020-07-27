@@ -26,9 +26,11 @@ public class Rentals {
     @Column(name = "readerId", unique = true)
     private Long readerId;
 
+    @NotNull
     @Column(name = "rentalDay")
     private LocalDate rentalDay;
 
+    @NotNull
     @Column(name = "returnDay")
     private LocalDate returnDay;
 }

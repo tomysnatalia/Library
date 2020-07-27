@@ -49,7 +49,5 @@ public class BookController {
     @RequestMapping(method = RequestMethod.PUT, value = "/book")
     public BookDto updateBook(@RequestBody BookDto bookDto) {
         return bookMapper.mapToBookDto(bookService.saveBook(bookMapper.mapToBook(bookDto)));
-
-
     }
 }

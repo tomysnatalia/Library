@@ -14,9 +14,9 @@ public class BookCopiesMapper {
                 bookCopiesDto.getId(),
                 bookCopiesDto.getExampleId(),
                 bookCopiesDto.getTitleId(),
-                bookCopiesDto.isLost(),
-                bookCopiesDto.isBorrowed(),
-                bookCopiesDto.isDestroyed());
+                bookCopiesDto.getIsLost(),
+                bookCopiesDto.getIsBorrowed(),
+                bookCopiesDto.getIsDestroyed());
     }
 
     public BookCopiesDto mapToBookCopiesDto (final BookCopies bookCopies) {
@@ -24,14 +24,14 @@ public class BookCopiesMapper {
                 bookCopies.getId(),
                 bookCopies.getExampleId(),
                 bookCopies.getTitleId(),
-                bookCopies.isLost(),
-                bookCopies.isBorrowed(),
-                bookCopies.isDestroyed());
+                bookCopies.getIsLost(),
+                bookCopies.getIsBorrowed(),
+                bookCopies.getIsDestroyed());
     }
 
     public List<BookCopiesDto> mapToBookCopiesDtoList (final List<BookCopies> bookCopiesList) {
         return bookCopiesList.stream()
-                .map(copies -> new BookCopiesDto(copies.getId(), copies.getExampleId(), copies.getTitleId(), copies.isLost(), copies.isBorrowed(), copies.isDestroyed()))
+                .map(copies -> new BookCopiesDto(copies.getId(), copies.getExampleId(), copies.getTitleId(), copies.getIsLost(), copies.getIsBorrowed(), copies.getIsDestroyed()))
                 .collect(Collectors.toList());
     }
 }

@@ -15,7 +15,7 @@ public interface BookCopiesRepository extends CrudRepository<BookCopies, Long> ,
     BookCopies save (BookCopies bookCopies);
 
     @Override
-    BookCopies findByTitleId(Long titleId);
+    List<BookCopies> findByTitleId(Long titleId);
 
     @Override
     void deleteByExampleId(Long exampleId);

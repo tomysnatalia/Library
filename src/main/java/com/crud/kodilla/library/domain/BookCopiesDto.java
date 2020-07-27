@@ -10,8 +10,8 @@ public class BookCopiesDto {
     private Long id;
     private Long exampleId;
     private Long titleId;
-    boolean isLost;
-    boolean isBorrowed;
-    boolean isDestroyed;
+    private String isLost;
+    private String isBorrowed;
+    private String isDestroyed;
 }
 
